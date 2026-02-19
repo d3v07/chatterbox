@@ -1,0 +1,35 @@
+# Build artifacts
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+*.o
+*.a
+*.so
+*.dylib
+
+# Executables
+chatterbox_server
+chatterbox_client
+chatterbox_server_app
+chatterbox_client_app
+
+# macOS
+.DS_Store
+*.dSYM/
+
+# IDE
+.vscode/
+.idea/
+compile_commands.json
+
+# Logs
+*.log
+logs/
+
+# Test output
+test-results/
+
+# Planning & internal docs
+chatterbox-info.rtf
