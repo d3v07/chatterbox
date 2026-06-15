@@ -71,7 +71,9 @@ UserId ConnectionManager::accept_connection(const std::string& username, key_t c
         stats_.active_connections = connections_.size();
     }
 
-    // Emit event
+    // Release the write lock before callbacks. Server callbacks read the same
+    // connection table to render user details.
+    lock.unlock();
     emit_event(user_id, ConnectionEvent::CONNECTED, username + " connected");
 
     return user_id;

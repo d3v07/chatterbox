@@ -128,9 +128,8 @@ ErrorCode Server::start() {
 
     message_router_->register_handler(protocol::MessageType::USER_LIST,
         [this](const protocol::Message& msg, UserId sender) {
-            (void)msg;
-            handle_user_list_request(protocol::Message(protocol::MessageType::USER_LIST));
             (void)sender;
+            handle_user_list_request(msg);
         }
     );
 
@@ -384,7 +383,7 @@ void Server::handle_connect_request(const protocol::Message& msg) {
         // Update stats
         {
             std::lock_guard<std::mutex> lock(stats_mutex_);
-            stats_.connections_total++;
+            stats_.total_connections++;
         }
     } else {
         if (connection_manager_->is_username_taken(username)) {

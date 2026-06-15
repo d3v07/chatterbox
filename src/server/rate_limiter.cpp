@@ -6,6 +6,8 @@ namespace server {
 
 RateLimiter::RateLimiter(const Config& cfg) : cfg_(cfg) {}
 
+RateLimiter::RateLimiter() : RateLimiter(Config{}) {}
+
 void RateLimiter::evict_old(UserState& state, TimePoint now) const {
     auto cutoff = now - std::chrono::milliseconds(cfg_.window_ms);
     while (!state.timestamps.empty() && state.timestamps.front() < cutoff) {

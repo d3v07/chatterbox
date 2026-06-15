@@ -20,7 +20,7 @@ namespace server {
 
 // Server configuration
 struct ServerConfig {
-    key_t ipc_base_key = BASE_IPC_KEY;
+    key_t ipc_base_key = SERVER_QUEUE_KEY;
     size_t max_users = MAX_USERS;
     size_t thread_pool_size = 8;
     int64_t heartbeat_interval_ms = HEARTBEAT_INTERVAL_MS;

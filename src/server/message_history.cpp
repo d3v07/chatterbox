@@ -7,6 +7,8 @@ namespace server {
 
 MessageHistory::MessageHistory(const Config& cfg) : cfg_(cfg) {}
 
+MessageHistory::MessageHistory() : MessageHistory(Config{}) {}
+
 MessageHistory::~MessageHistory() = default;
 
 void MessageHistory::evict() {

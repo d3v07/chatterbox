@@ -1,0 +1,31 @@
+ChatterBox CLI runtime transcript
+=================================
+
+Server:
+
+build/chatterbox_server -p 142 -u 5 -t 2
+
+[23:18:20] Connection request from: Alice2
+[+] User connected: Alice2 (ID: 3)
+[MSG] From 3: hello from delayed cli
+[23:18:23] User disconnecting: Alice2 (reason: User exit)
+[-] User disconnected: ID 3 (Alice2 disconnected: User exit)
+
+Client:
+
+(sleep 1; printf '/users\n'; sleep 1; printf 'hello from delayed cli\n'; sleep 1; printf '/quit\n') | build/chatterbox_client -s 142 -n -r Alice2
+
+[23:18:20] * Connected: Welcome to ChatterBox!
+Connected. Type messages and press Enter to send.
+Commands: /quit, /users, /msg <user> <message>
+
+Online users (1):
+  - Alice2 (#3)
+[23:18:22] Alice2: hello from delayed cli
+[23:18:25] * Disconnected: User exit
+
+Session Statistics:
+  Messages Sent: 1
+  Messages Received: 2
+  Average Latency: 0ms
+  Reconnect Count: 0
