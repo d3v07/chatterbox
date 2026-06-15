@@ -23,7 +23,8 @@ public:
         std::string persist_path = "chatterbox_history.log";
     };
 
-    explicit MessageHistory(const Config& cfg = Config());
+    explicit MessageHistory(const Config& cfg);
+    MessageHistory();
     ~MessageHistory();
 
     // Append a message. Evicts old/excess entries first.

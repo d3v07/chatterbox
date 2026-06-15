@@ -16,8 +16,8 @@ namespace ipc {
 // Message buffer structure for System V message queues
 struct MessageBuffer {
     long mtype;                         // Message type (used for routing)
-    char mtext[MAX_MESSAGE_SIZE];       // Message data
     size_t length;                      // Actual message length
+    char mtext[MAX_MESSAGE_SIZE];       // Message data
 };
 
 // RAII wrapper for System V message queue

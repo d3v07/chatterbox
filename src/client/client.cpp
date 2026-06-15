@@ -85,8 +85,7 @@ ErrorCode Client::connect(const std::string& username) {
     // Send connect request
     auto connect_msg = protocol::Message::create_connect_request(config_.username);
     // Store client queue key in timestamp field for server to extract
-    connect_msg.header().timestamp = static_cast<uint64_t>(client_queue_key_ - config_.server_queue_key - 1000) % 10000
-                                    + protocol::Timestamp::now().value();
+    connect_msg.header().timestamp = static_cast<uint64_t>(client_queue_key_ - config_.server_queue_key - 1000) % 10000;
     connect_msg.update_checksum();
 
     err = send_raw(connect_msg);

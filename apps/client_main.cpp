@@ -1,4 +1,5 @@
 #include <chatterbox/client/client.hpp>
+#include <chatterbox/protocol/serializer.hpp>
 #include <iostream>
 #include <csignal>
 

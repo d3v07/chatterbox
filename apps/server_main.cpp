@@ -1,4 +1,5 @@
 #include <chatterbox/server/server.hpp>
+#include <chatterbox/protocol/serializer.hpp>
 #include <iostream>
 #include <csignal>
 #include <cstring>
@@ -45,7 +46,7 @@ int main(int argc, char* argv[]) {
         } else if (arg == "-p" || arg == "--port") {
             if (i + 1 < argc) {
                 int offset = std::stoi(argv[++i]);
-                config.ipc_base_key = BASE_IPC_KEY + offset;
+                config.ipc_base_key = SERVER_QUEUE_KEY + offset;
             }
         } else if (arg == "-u" || arg == "--max-users") {
             if (i + 1 < argc) {
@@ -122,7 +123,7 @@ int main(int argc, char* argv[]) {
     // Print final statistics
     auto stats = g_server->get_stats();
     std::cout << "\nFinal Statistics:\n"
-              << "  Total Connections: " << stats.connections_total << "\n"
+              << "  Total Connections: " << stats.total_connections << "\n"
               << "  Messages Received: " << stats.messages_received << "\n"
               << "  Messages Sent: " << stats.messages_sent << "\n"
               << "  Messages Dropped: " << stats.messages_dropped << "\n"

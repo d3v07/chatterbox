@@ -90,7 +90,7 @@ ErrorCode MessageQueue::send(long type, const void* data, size_t size, bool bloc
 
     std::lock_guard<std::mutex> lock(mutex_);
 
-    if (msgsnd(queue_id_, &buffer, sizeof(buffer.mtext) + sizeof(buffer.length), flags) < 0) {
+    if (msgsnd(queue_id_, &buffer, sizeof(buffer.length) + size, flags) < 0) {
         if (errno == EAGAIN) {
             return ErrorCode::ERR_TIMEOUT;
         }

@@ -29,7 +29,8 @@ public:
         uint64_t  total_sent    = 0;
     };
 
-    explicit RateLimiter(const Config& cfg = Config());
+    explicit RateLimiter(const Config& cfg);
+    RateLimiter();
 
     // Returns true when the message is allowed; false when it should be dropped.
     bool check(UserId user_id);
